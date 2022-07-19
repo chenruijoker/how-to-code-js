@@ -1,0 +1,24 @@
+{
+  "name": "how-to-code",
+  "version": "1.0.0",
+  "description": "just a coder wanna make life better",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenruijoker/how-to-code-js.git"
+  },
+  "keywords": [
+    "[\"howtocodejs\"",
+    "\"codejs\"",
+    "\"js-stander\"]"
+  ],
+  "author": "chenrui",
+  "license": "SEE LICENCE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/chenruijoker/how-to-code-js/issues"
+  },
+  "homepage": "https://github.com/chenruijoker/how-to-code-js#readme"
+}
