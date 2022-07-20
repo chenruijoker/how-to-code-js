@@ -92,4 +92,18 @@ const Func = (obj) => {
 };
 ```
 
-有个比较严重的问题在于，你并不知道 ABCDEF 当中哪个属性可能是为`undefind`
+有个比较严重的问题在于，你并不知道 ABCDEF 当中哪个属性可能是为`undefind`，导致你的程序会出现报错，当然我们也知道 js 新语法糖里还有这种写法：`obj?.xx?.xx?.xx?.xx`,但这写法并不支持 `obj[2][2].xx.xx` 这类更加复杂的写法，而且也可能在个别浏览器中编译后出现意料之外的错误问题，索性本文档就提供了对应的获取长链路的函数方法，具体在目录 `/utils-cn` 中
+
+`nice-example`
+
+```javascript
+import{getObjectFinalValue} from "../utils-cn"
+// 假设一定要返回默认值
+const Func = (obj = {}) => {
+    return getObjectFinalValue(obj."A.B.C.D.E.F") || "数据异常";
+};
+```
+
+## 虚拟树兜底
+
+现在有很多前端业务都属于数据图形化

@@ -6,7 +6,7 @@ export function getObjectFinalValue(obj, str) {
     if (!str) {
         throw new Error("getObjectFinalValue():没有传递第二个参数");
     }
-    let arr = str.split(".");
+    let arr = str.replace(/\[/g, ".").replace(/\]/g, "").split(".");
     let newObj = obj;
     for (let i of arr) {
         newObj = newObj[i];
