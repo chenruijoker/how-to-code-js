@@ -1,5 +1,15 @@
 # 如何做数据兜底
 
+**本文目录**
+
+-   [函数入参数据兜底](#函数入参数据兜底)
+    -   [函数根据入参做一些交互改变操作](#函数根据入参做一些交互改变操作)
+    -   [函数通过入参来返回对应的数值](#函数通过入参来返回对应的数值)
+-   [长链路数据获取兜底](#长链路数据获取兜底)
+-   [虚拟树兜底](#虚拟树兜底)
+
+---
+
 ## 函数入参数据兜底
 
 我们在书写一些 `function` 或者 `箭头` 函数的时候无非做两种事情:
@@ -106,4 +116,21 @@ const Func = (obj = {}) => {
 
 ## 虚拟树兜底
 
-现在有很多前端业务都属于数据图形化
+现在有很多前端业务都属于数据图形化,比如 echarts 或者 antV 之类的可视化插件包
+根据 [`echarts 官网`](https://echarts.apache.org/handbook/zh/get-started/) 入门部分我们能看到这样一段代码
+
+```javascript
+var myChart = echarts.init(document.getElementById("main"));
+```
+
+但是请注意，echarts 的 demo 代码是基于真实树结构的，所以 `document.getElementById("main")` 是一定能够获取到对应的 dom 节点的！  
+然而，我们往往是虚拟树开发，如果在组件挂载的时候直接使用这种写法，真实树可能并没有对应的 id 为 main 的 div 节点，所以我们必然会出现报错失败或者白屏黑屏的情况,所以我们需要对对应的节点产生监听行为，以`react-hooks`为例:
+
+```javascript
+import { useEffect, useRef } from "react";
+const A = (props) => {
+    const ERef = useRef();
+    useEffect(() => {}, [ERef.current]);
+    return <div ref={ERef}></div>;
+};
+```
