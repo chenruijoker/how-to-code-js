@@ -1,5 +1,9 @@
 # how-to-code-js(中文版)
 
+![](https://img.shields.io/github/downloads/chenruijoker/how-to-code-js/total?color=green&logo=github&style=plastic)
+[![License](https://img.shields.io/github/license/chenruijoker/how-to-code-js?style=plastic)](./LICENSE)
+![](https://img.shields.io/github/v/tag/chenruijoker/how-to-code-js?include_prereleases)
+
 ## 前言
 
 最近带团队，发现了各种各样的 js-coder 的开发习惯问题,正常来说，作为一个有追求的 Coder，写完代码合上笔记本应当有武士收刀入鞘的干净利落，但往往因为各种各样的不良习惯,导致测试人员和开发者徒增工作量,这个文档就是用来为一些习惯不好的同学来一点点规范自己书写代码的习惯，然后让低级 bug 飞走不再困扰！本文章属于 `1.0.0` 版本，后期会随之提供 React 工程、工作方法论等相关文档。
