@@ -12,6 +12,8 @@
 
 ## 函数入参数据兜底
 
+先说结论: 自己书写的函数入参一定要带默认值！
+
 我们在书写一些 `function` 或者 `箭头` 函数的时候无非做两种事情:
 
 -   函数根据入参做一些交互改变操作
@@ -124,13 +126,69 @@ var myChart = echarts.init(document.getElementById("main"));
 ```
 
 但是请注意，echarts 的 demo 代码是基于真实树结构的，所以 `document.getElementById("main")` 是一定能够获取到对应的 dom 节点的！  
-然而，我们往往是虚拟树开发，如果在组件挂载的时候直接使用这种写法，真实树可能并没有对应的 id 为 main 的 div 节点，所以我们必然会出现报错失败或者白屏黑屏的情况,所以我们需要对对应的节点产生监听行为，以`react-hooks`为例:
+然而，我们往往是虚拟树开发，如果在组件挂载的时候直接使用这种写法，真实树可能并没有对应的 id 为 main 的 div 节点，所以我们必然会出现报错失败或者白屏黑屏的情况,所以我们需要对对应的节点产生监听行为，以`react-hooks`为例，我们先看看历史发现的一些错误写法：
+
+`bad-example`
+
+```javascript
+const [myChart, setMyChart] = useState(null);
+const chartRef = useRef();
+useEffect(() => {
+    if (!myChart) return;
+    let cb = () => {
+        myChart.resize();
+    };
+    window.addEventListener("resize", cb);
+    return () => {
+        window.removeEventListener("resize", cb);
+    };
+}, [myChart]);
+useEffect(() => {
+    if (!myChart) return;
+    // 这里就是绘制对应的echarts内容
+    draw(datas);
+}, [myChart, datas]);
+useEffect(() => {
+    setMyChart(echarts.init(chartRef.current || ""));
+}, []);
+return <div ref={chartRef} style={{ width: "100%", height: "100%" }}></div>;
+```
+
+先说优点吧,首先这个同学很聪明的是采用 **`ref`** 而不是 **`id`** 来获取到对应的 div 节点,而且他是在 `useEffect(()=>{},[])` 中，即组件挂载树后去渲染  
+但是缺点也很直接，第一个没有必要再去设置 `myChart` 的 `useState` ,另一点，即 `useEffect` 重复监听 `myChart` 是完全没有必要的
+
+`nice-example-first`
 
 ```javascript
 import { useEffect, useRef } from "react";
 const A = (props) => {
     const ERef = useRef();
-    useEffect(() => {}, [ERef.current]);
+    useEffect(() => {
+        const myChart = echarts.init(ERef.current);  // 一定能获取到
+        const option = {...} // 默认有值
+        myChart.setOption(option);
+    }, []);
     return <div ref={ERef}></div>;
 };
 ```
+
+当然在某些特殊的复杂交互中这个 dom 节点的内容会出现隐藏不渲染，交互之后又显示的情况，我们其实完全可以这么写：
+
+`nice-example-second`
+
+```javascript
+import { useEffect, useRef } from "react";
+const A = (props) => {
+    const ERef = useRef();
+    useEffect(() => {
+        if(!!ERef.current){
+            const myChart = echarts.init(ERef.current);  // 一定能获取到
+            const option = {...} // 默认有值
+            myChart.setOption(option);
+        }
+    }, [ERef.current]);
+    return <div ref={ERef}></div>;
+};
+```
+
+代码量更少且更加直观了。当然这里是以 echarts 作为一个例子，日后也会出现类似虚拟树使用方式理解上的问题，但一通百通，基本就可以用类似的方式解决虚拟树获取不到渲染问题了。
