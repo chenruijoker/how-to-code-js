@@ -5,7 +5,7 @@
 **本文目录**
 
 -   [禁用 ==](#禁用)
--   [如何求真]()
+-   [如何求真](#如何求真)
 
 ---
 
@@ -38,3 +38,7 @@ var obj = {
 };
 console.log(obj == 0); // Error: Cannot convert object to primitive value
 ```
+
+所以根据 **[数据来源不信任原则](../README.md#开发原则)** 我们基本还是采用 `===` 去进行数据的比较判断
+
+## 如何求真
