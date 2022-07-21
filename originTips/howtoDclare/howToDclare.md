@@ -6,8 +6,8 @@
 
 -   [html 标签或组件标签使用技巧]()
 -   [声明 css、scss or less 变量](#声明-cssscss-变量)
--   声明 js 变量
-    -   声明基本变量
+-   [声明 js 变量](#声明-js-变量)
+    -   [声明基本变量](#声明基本变量)
     -   声明 API 函数变量
     -   声明普通函数变量
 -   声明 React 组件
@@ -66,11 +66,34 @@
     .navigation-bar {
         .navigation-button {
         }
-        // 由于这个button的样式是针对navigation独有的，所以甚至可以直接不需要navigation-button而直接使用 button
+        // 由于这个button的样式是针对navigation独有的，所以甚至可以不需要navigation-button而直接使用 button
     }
     .message-bell {
     }
     .avatar {
     }
 }
+```
+
+## 声明 js 变量
+
+### 声明基本变量
+
+我们一般声明变量基本上都是按照 **`业务内容`** 去声明变量
+
+我们最好采用`小驼峰命名`
+
+```javascript
+let userInfo = {};
+let list = [];
+let fatherName = "";
+```
+
+当然并不是说所有的业务内容都适合采用这种方式,有时候我们对于某些特殊场景需要用到一些常量数据，为了快速在业务代码中分辨哪些是不可变更常量数据哪些是可变业务数据，我们往往会把常量数据单独提出来放在另一个 js 文件中，让业务代码去引用
+
+我们采用`大写+下划线的方式`
+
+```javascript
+export const LIST = [];
+export const MOCK_DATA = {};
 ```
