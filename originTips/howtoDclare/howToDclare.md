@@ -5,7 +5,7 @@
 **本文目录**
 
 -   [html 标签或组件标签使用技巧](#html-标签或组件标签使用技巧s)
--   [声明 css、scss or less 变量](#声明-cssscss-变量)
+-   [声明 css、scss or less 变量](#声明-cssscss-or-less-变量)
 -   [声明 js 变量](#声明-js-变量)
     -   [声明基本变量](#声明基本变量)
     -   声明 API 函数变量
