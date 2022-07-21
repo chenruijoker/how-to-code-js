@@ -56,10 +56,10 @@
 
 ## 目录索引
 
--   工作方法论（陋习 1，2，3，4，5，8）
+-   [工作方法论](./normalText/howToWork.md)（陋习 1，2，3，4，5，8）
 -   [如何声明变量](./originTips/howToDclare.md)
 -   [如何判断数据求真](./originTips/booleanCode-cn.md)
 -   [如何做数据兜底](./originTips/safeCode-cn.md)（陋习 6，7）
 -   [如何让其他程序员按照你的预期使用你的函数](./originTips/otherOneCode.md)
+-   [如何书写前端工程文件](./EngineeTips//engineeTip.md)（组件关系等）
 -   如何书写优雅代码（设计模式）
--   如何写好优雅的前端工程文件（组件关系等）
