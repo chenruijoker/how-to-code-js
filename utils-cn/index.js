@@ -1,5 +1,5 @@
 // 返回长链路对象
-export function getObjectFinalValue(obj, str) {
+export const getObjectFinalValue = (obj, str) => {
     if (!obj || JSON.stringify(obj) === "{}") {
         return undefined;
     }
@@ -15,4 +15,4 @@ export function getObjectFinalValue(obj, str) {
         }
     }
     return newObj;
-}
+};
