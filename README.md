@@ -63,4 +63,7 @@
 -   [如何做数据兜底](./originTips/safeCode-cn.md)（陋习 6，7）
 -   [如何让其他程序员按照你的预期使用你的函数](./originTips/otherOneCode.md)
 -   [如何书写前端工程文件](./EngineeTips//engineeTip.md)（组件关系等）
--   如何书写优雅代码（设计模式）
+
+---
+
+tips：之后还会补充如何书写好代码的设计模式的补充说明
