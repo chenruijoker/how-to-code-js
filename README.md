@@ -57,7 +57,7 @@
 ## 目录索引
 
 -   [工作方法论](./normalText/howToWork.md)（陋习 1，2，3，4，5，8）
--   [缩进规范-4 个空格](./originTips/booleanCode-cn.md)
+-   [缩进规范-4 个空格](./originTips/tabCode.md)
 -   [如何声明变量](./originTips/howtoDclare/howToDclare.md)
 -   [如何判断 if 数据求真](./originTips/booleanCode-cn.md)
 -   [如何做数据兜底](./originTips/safeCode-cn.md)（陋习 6，7）
