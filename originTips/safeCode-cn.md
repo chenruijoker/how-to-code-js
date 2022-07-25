@@ -109,10 +109,10 @@ const Func = (obj) => {
 `nice-example`
 
 ```javascript
-import{getObjectFinalValue} from "../utils-cn"
+import { getObjectFinalValue } from "../utils-cn";
 // 假设一定要返回默认值
 const Func = (obj = {}) => {
-    return getObjectFinalValue(obj."A.B.C.D.E.F") || "数据异常";
+    return getObjectFinalValue(obj, "A.B.C.D.E.F") || "数据异常";
 };
 ```
 
